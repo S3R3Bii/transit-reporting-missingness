@@ -1,0 +1,33 @@
+{
+  "timestamp_utc": "2026-10-29T20:48:23.968290+00:00",
+  "source_commit": "5df333342fe44955b40e8c7eb79a6ac8a4374e50",
+  "held_outcomes_inspected": false,
+  "dependencies": {
+    "PROTOCOL.md": "c609df06bdd49271b8c18aadc9baa4420f741ada8265df405b2605c0d44a15c7",
+    "protocol.json": "aac3a0c9addecd43138f6e2c528264f02f31b6f3aacb1acd5e9eba21badc1ba9",
+    "SOURCES.md": "80a07a6347a6f056da84b954b91bb1af38d5fc58fd4e07624434ccd4fc93f2c8",
+    "data/README.md": "71bd15aab64add2b033fcc991545e162256d01ff538ee1e9ab334f82c12365bb",
+    "data/source/agency-year-controls.json.gz": "e1247a99816d5b1382a77b8256a3b9fc5f8318c19c801d2ff5eb3775e8410883",
+    "data/source/counts.csv.gz": "e2fbd1db72826fca3d8c84720e9fd0cf6ef8654788b10e96218d979594436891",
+    "data/source/manifest.json": "3b3114cb2667076e6fd7784ecba1f72fa0ff01916d98ab0e60d1475d9df42ad5",
+    "data/source/monthly-controls.json.gz": "51b85136d77ccfb13280a9f096140fdeca74e1a82a81b275f78d9ec5d381ada5",
+    "data/source/rows-000.json.gz": "23acf0b38e80dc7a1da54c7a5a1ef1149bda6055ced068d9fcebaad1101c7b01",
+    "data/source/VERIFICATION.json": "5ed1abf7ca60ebfb50e112eb314ce97e93b6b8908f97e699d1326c30134d9806",
+    "src/ingest.py": "41e05e0d56b9a597ab16a409cd2f204f7b6b865a46ca0d45542c902059da1d52",
+    "src/model.py": "62602a34b9399dcf84019b6c6b3775ca19a8886a4e8ffda1059f35cfbb22e618",
+    "src/run_analysis.py": "13d097d011c5080976377fc7030d2ecd2727201fd233f5af9784d2c4261de778",
+    "src/verify_freeze.py": "f01013d6ae0d01a839fc3fd779964e9cfa311626416dd8248aa6fa9c4c337d58",
+    "src/verify_results.py": "09479d4e6d286744df6d1d4990a048d74eaf47e1c942c935121dc9ee15aa5d1e",
+    "src/verify_source.py": "b7c140b5b95a86452fca43c37f9fe3829afded79f4da9c088709396b1b05bb2b",
+    "tests/test_reporting.py": "cae121881cf766175c8f056e6c2beb0f6895ba0070d77b4a1faf9f20a979a61c",
+    "results/development-cohorts.csv": "36d5109232a95c68cfa7fca1dc77194d74e5118892a5216f62c94b25cb4cee2c"
+  },
+  "separation": "Development2020-2022 verified; no held analytical summaries. Source inputs and quality visible without blinding; complete-pair eligibility is retrospective, not prospective. No fitting or policy selection.",
+  "development": {
+    "status": "PASS",
+    "phase": "development",
+    "exact_export_scalar_checks": 172866,
+    "baseline_roster_units": 455,
+    "scope": "Independent SQLite eligibility/window ranking and integer/rational reconstruction; no production analysis imports or future-performance claim."
+  }
+}

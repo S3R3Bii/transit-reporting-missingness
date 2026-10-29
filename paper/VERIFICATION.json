@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "independent_paper_checks": 1025,
+  "displayed_primary_rows": 12,
+  "displayed_setting_rows": 27,
+  "displayed_bound_rows": 9,
+  "pdf_pages": 7,
+  "pdf_active_content_checks": 4,
+  "scope": "Independent summary verification, displayed cells/claims/hashes and bounded PDF actions; rights and rendered readability reviewed separately."
+}

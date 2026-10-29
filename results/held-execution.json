@@ -1,0 +1,10 @@
+{
+  "phase": "held",
+  "elapsed_seconds": 0.6396537999389693,
+  "baseline_roster_units": 455,
+  "cohort_unit_year_pairs": 1229,
+  "point_rows": 2916,
+  "bound_rows": 2916,
+  "mask_memberships": 3906,
+  "scope": "Fixed retrospective published-count benchmark with synthetic gaps; no fitting or empirical missingness mechanism claim."
+}
