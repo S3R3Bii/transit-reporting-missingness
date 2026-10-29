@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "source_rows": 38584,
+  "independent_projection_scalar_checks": 192920,
+  "independent_server_control_checks": 10083,
+  "annual_source_quality": [
+    {
+      "year": 2019,
+      "rows": 5544,
+      "nonnull": 5539,
+      "explicit_null": 5,
+      "reported_zero": 3,
+      "published_upt": 4346533899
+    },
+    {
+      "year": 2020,
+      "rows": 5566,
+      "nonnull": 5562,
+      "explicit_null": 4,
+      "reported_zero": 100,
+      "published_upt": 2384263369
+    },
+    {
+      "year": 2021,
+      "rows": 5536,
+      "nonnull": 5531,
+      "explicit_null": 5,
+      "reported_zero": 32,
+      "published_upt": 2351418722
+    },
+    {
+      "year": 2022,
+      "rows": 5473,
+      "nonnull": 5462,
+      "explicit_null": 11,
+      "reported_zero": 10,
+      "published_upt": 2842851013
+    },
+    {
+      "year": 2023,
+      "rows": 5502,
+      "nonnull": 5488,
+      "explicit_null": 14,
+      "reported_zero": 12,
+      "published_upt": 3302630606
+    },
+    {
+      "year": 2024,
+      "rows": 5492,
+      "nonnull": 5481,
+      "explicit_null": 11,
+      "reported_zero": 12,
+      "published_upt": 3623294572
+    },
+    {
+      "year": 2025,
+      "rows": 5471,
+      "nonnull": 5471,
+      "explicit_null": 0,
+      "reported_zero": 16,
+      "published_upt": 3662131371
+    }
+  ],
+  "limits": "Controls reconcile the captured publication; individual ridership accuracy, actual service eligibility, provenance flags and original historical vintages remain unverified."
+}

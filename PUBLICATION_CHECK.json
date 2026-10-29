@@ -1,7 +1,7 @@
 {
-  "timestamp_utc": "2026-10-29T20:44:28.618085+00:00",
+  "timestamp_utc": "2026-10-29T20:45:52.477781+00:00",
   "status": "PASS_BOUNDED_SCAN",
-  "files_checked": 5,
+  "files_checked": 15,
   "scope": "Exact staged Git index bytes; decompressed text; forbidden paths/extensions, high-confidence key and private machine path patterns; local Markdown links. Image/PDF contents require separate visual/source review. This is not universal secret detection.",
   "findings": [],
   "sha256": {
@@ -9,7 +9,16 @@
     "PROTOCOL.md": "c609df06bdd49271b8c18aadc9baa4420f741ada8265df405b2605c0d44a15c7",
     "README.md": "7865c7ba223014f00e757798a9ceecd3c9faf7d0ea0afc29acdd5b1ef6a53b66",
     "SOURCES.md": "80a07a6347a6f056da84b954b91bb1af38d5fc58fd4e07624434ccd4fc93f2c8",
-    "protocol.json": "aac3a0c9addecd43138f6e2c528264f02f31b6f3aacb1acd5e9eba21badc1ba9"
+    "data/README.md": "71bd15aab64add2b033fcc991545e162256d01ff538ee1e9ab334f82c12365bb",
+    "data/source/VERIFICATION.json": "5ed1abf7ca60ebfb50e112eb314ce97e93b6b8908f97e699d1326c30134d9806",
+    "data/source/agency-year-controls.json.gz": "e1247a99816d5b1382a77b8256a3b9fc5f8318c19c801d2ff5eb3775e8410883",
+    "data/source/counts.csv.gz": "e2fbd1db72826fca3d8c84720e9fd0cf6ef8654788b10e96218d979594436891",
+    "data/source/manifest.json": "3b3114cb2667076e6fd7784ecba1f72fa0ff01916d98ab0e60d1475d9df42ad5",
+    "data/source/monthly-controls.json.gz": "51b85136d77ccfb13280a9f096140fdeca74e1a82a81b275f78d9ec5d381ada5",
+    "data/source/rows-000.json.gz": "23acf0b38e80dc7a1da54c7a5a1ef1149bda6055ced068d9fcebaad1101c7b01",
+    "protocol.json": "aac3a0c9addecd43138f6e2c528264f02f31b6f3aacb1acd5e9eba21badc1ba9",
+    "src/ingest.py": "42667c363f09defe77a8a6010c34db18732423768c38eeaf8f4cac076fdb1700",
+    "src/verify_source.py": "dc9fb5ca5eccc6cbba537e1e2cb8128bc3fc3655bb164fc3b2486588fa0521a5"
   },
   "raw_source_members_excluded": true,
   "unapproved_manuscripts_excluded": true,

@@ -1,0 +1,63 @@
+{
+  "retrieved_utc": "2026-10-29T20:45:28.953628+00:00",
+  "metadata": {
+    "id": "5ti2-5uiv",
+    "name": "Monthly Modal Time Series",
+    "license": "PUBLIC_DOMAIN",
+    "rowsUpdatedAt": 1791312691,
+    "viewLastModified": 1791312745,
+    "columns": [
+      {
+        "field": "_5_digit_ntd_id",
+        "type": "text"
+      },
+      {
+        "field": "type_of_service",
+        "type": "text"
+      },
+      {
+        "field": "year",
+        "type": "number"
+      },
+      {
+        "field": "month_year",
+        "type": "calendar_date"
+      },
+      {
+        "field": "ridership",
+        "type": "number"
+      }
+    ]
+  },
+  "metadata_before_sha256": "ee0b7adcdabe36051abff13473530e085b340321b72fae567ade7ec6338c95a3",
+  "metadata_after_sha256": "ee0b7adcdabe36051abff13473530e085b340321b72fae567ade7ec6338c95a3",
+  "requests": [
+    {
+      "name": "rows-000.json.gz",
+      "url": "https://data.transportation.gov/resource/5ti2-5uiv.json?%24select=_5_digit_ntd_id%2Ctype_of_service%2Cyear%2Cmonth_year%2Cridership&%24where=mode%3D%27MB%27+AND+year+between+2019+and+2025&%24order=_5_digit_ntd_id%2Ctype_of_service%2Cyear%2Cmonth_year&%24limit=50000&%24offset=0",
+      "response_sha256": "97bc4a464b78a2e46d6baea3dbdec9ff23fcb05e73b5099854c1fa4e72584948",
+      "compressed_sha256": "23acf0b38e80dc7a1da54c7a5a1ef1149bda6055ced068d9fcebaad1101c7b01",
+      "bytes": 4838168
+    },
+    {
+      "name": "monthly-controls.json.gz",
+      "url": "https://data.transportation.gov/resource/5ti2-5uiv.json?%24select=year%2Cmonth_year%2Ccount%28%2A%29+as+rows%2Ccount%28ridership%29+as+nonnull%2Csum%28ridership%29+as+upt&%24where=mode%3D%27MB%27+AND+year+between+2019+and+2025&%24group=year%2Cmonth_year&%24order=year%2Cmonth_year&%24limit=50000",
+      "response_sha256": "5356213c47396f46d186ac07564edaae3c9c5a997b1f7820fca9f0050fa56ebc",
+      "compressed_sha256": "51b85136d77ccfb13280a9f096140fdeca74e1a82a81b275f78d9ec5d381ada5",
+      "bytes": 8653
+    },
+    {
+      "name": "agency-year-controls.json.gz",
+      "url": "https://data.transportation.gov/resource/5ti2-5uiv.json?%24select=_5_digit_ntd_id%2Ctype_of_service%2Cyear%2Ccount%28%2A%29+as+rows%2Ccount%28ridership%29+as+nonnull%2Csum%28ridership%29+as+upt&%24where=mode%3D%27MB%27+AND+year+between+2019+and+2025&%24group=_5_digit_ntd_id%2Ctype_of_service%2Cyear&%24order=_5_digit_ntd_id%2Ctype_of_service%2Cyear&%24limit=50000",
+      "response_sha256": "364e0a7e081623497a9f870e8c9bb5019cc410f0a1890fb06959e248fe4cc5dc",
+      "compressed_sha256": "e1247a99816d5b1382a77b8256a3b9fc5f8318c19c801d2ff5eb3775e8410883",
+      "bytes": 355227
+    }
+  ],
+  "projection": {
+    "path": "counts.csv.gz",
+    "sha256": "e2fbd1db72826fca3d8c84720e9fd0cf6ef8654788b10e96218d979594436891",
+    "rows": 38584
+  },
+  "scope": "Only protocol-selected public federal agency-service/month UPT facts. No safety, passenger-level or contact fields."
+}
