@@ -1,0 +1,10 @@
+gamma,masked_side,n,finite,assumptions_valid,truth_contained,violated_components,conditional_positive_lowers,assumption_supported_positive
+1,prior,324,324,219,309,842,123,59
+1,current,324,324,142,308,1280,112,18
+1,both,324,324,131,324,2122,104,18
+2,prior,324,324,297,324,37,93,78
+2,current,324,324,269,324,68,112,79
+2,both,324,324,266,324,105,82,56
+4,prior,324,324,312,324,12,70,64
+4,current,324,324,298,324,26,112,96
+4,both,324,324,298,324,38,69,57

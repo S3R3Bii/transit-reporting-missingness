@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "phase": "held",
+  "exact_export_scalar_checks": 171408,
+  "baseline_roster_units": 455,
+  "scope": "Independent SQLite eligibility/window ranking and integer/rational reconstruction; no production analysis imports or future-performance claim."
+}

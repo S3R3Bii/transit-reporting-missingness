@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "exact_csv_fields": 346434,
+  "verification_documents": 3,
+  "protected_dependencies": 18,
+  "phases": [
+    {
+      "status": "PASS",
+      "phase": "development",
+      "exact_export_scalar_checks": 172866,
+      "baseline_roster_units": 455,
+      "scope": "Independent SQLite eligibility/window ranking and integer/rational reconstruction; no production analysis imports or future-performance claim."
+    },
+    {
+      "status": "PASS",
+      "phase": "held",
+      "exact_export_scalar_checks": 171408,
+      "baseline_roster_units": 455,
+      "scope": "Independent SQLite eligibility/window ranking and integer/rational reconstruction; no production analysis imports or future-performance claim."
+    }
+  ],
+  "timing": "Per-phase original execution timings retained; variable replay timings excluded from deterministic identity."
+}

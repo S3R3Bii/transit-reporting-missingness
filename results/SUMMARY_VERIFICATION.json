@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "exact_summary_scalar_checks": 2160,
+  "scope": "Every setting, primary and bound summary independently recomputed from row-level growth and interval exports."
+}
