@@ -1,0 +1,88 @@
+{
+  "study": "07",
+  "version": 1,
+  "source": {
+    "dataset": "5ti2-5uiv",
+    "url": "https://data.transportation.gov/resource/5ti2-5uiv.json",
+    "mode": "MB",
+    "start_year": 2019,
+    "end_year": 2025,
+    "fields": [
+      "_5_digit_ntd_id",
+      "type_of_service",
+      "year",
+      "month_year",
+      "ridership"
+    ],
+    "license": "PUBLIC_DOMAIN",
+    "metadata_before_counts": true
+  },
+  "key": [
+    "_5_digit_ntd_id",
+    "type_of_service",
+    "year",
+    "month"
+  ],
+  "baseline_year": 2019,
+  "development_years": [
+    2020,
+    2021,
+    2022
+  ],
+  "held_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "cohort": "All MB agency-service keys with twelve nonnegative integer published UPT entries and positive annual sum in 2019. Each year pair benchmark is restricted to that baseline cohort with all24 entries observed; every excluded key/reason retained.",
+  "mask_fractions": [
+    "1/20",
+    "1/10",
+    "1/5"
+  ],
+  "rankings": [
+    "baseline_volume_desc",
+    "baseline_volume_asc",
+    "identifier"
+  ],
+  "masked_sides": [
+    "prior",
+    "current",
+    "both"
+  ],
+  "mask_count": "ceil(fraction*n), without tuning; ties by agency ID then type of service",
+  "point_views": [
+    "zero_fill",
+    "count_rescaled",
+    "matched_panel"
+  ],
+  "bound_multipliers": [
+    "1",
+    "2",
+    "4"
+  ],
+  "missing_upper": "gamma times the same service-unit calendar-month published UPT in 2019; lower0; untuned illustrative assumptions, not statistical confidence bounds",
+  "primary_scenario": {
+    "fraction": "1/10",
+    "ranking": "baseline_volume_desc",
+    "masked_side": "prior",
+    "bound_multiplier": "2"
+  },
+  "metrics": [
+    "monthly growth percentage-point absolute error",
+    "growth sign errors",
+    "conditional interval coverage and width",
+    "individual upper-bound assumption violations",
+    "number and 2019-volume share masked"
+  ],
+  "selection": "No fitting, optimization, winner selection or stochastic masking. All27 masks,3 point views and3 bound assumptions retained. All source inputs/quality visible. Freeze executable dependencies before held analytical summaries.",
+  "source_gates": [
+    "unique full keys",
+    "nonnegative integer ridership or explicit null",
+    "strict year/date consistency",
+    "before/after metadata revision identity",
+    "independent server monthly and agency-year count/non-null/sum controls"
+  ],
+  "replay": "Captured published snapshot, exact integer/rational arithmetic and independent SQLite reconstruction; no live historical-vintage availability claim",
+  "public_scope": "Minimal federal aggregate public-domain service-count projection and original analysis; safety fields, private people/contact metadata and full third-party documents excluded"
+}

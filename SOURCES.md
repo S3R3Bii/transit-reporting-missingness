@@ -1,0 +1,7 @@
+# Source and method grounding
+
+- Federal Transit Administration, Monthly Ridership: https://www.transit.dot.gov/ntd/monthly-ridership . Describes reporting population, service measures and differences between raw and adjusted/estimated products. This study uses the separately identified DOT modal portal snapshot and does not claim it is an original-vintage raw workbook.
+- DOT/FTA Monthly Modal Time Series: https://data.transportation.gov/Public-Transit/Monthly-Modal-Time-Series/5ti2-5uiv . Official metadata explicitly identifies null monthly service entries with late reporting; source license PUBLIC_DOMAIN. Exact schema/revision/query hashes will be retained.
+- BTS, Public Transit Ridership Used in the Transportation Services Index: https://www.bts.gov/learn-about-bts-and-our-work/statistical-methods-and-policies/public-transit-ridership . Reporting/revision and counting limitations; counts need not be exact passenger truth.
+
+The methods are established sum, complete-pair and assumption-bound arithmetic. Bounds follow monotonicity of a nonnegative ratio on a rectangular total interval and will be shown explicitly. No scientific novelty or exhaustive literature review is claimed. Only minimal factual derivatives and original code/figures are public; full source manuals, site artwork and private metadata are excluded. Source estimation provenance and original historical availability remain unknown.
