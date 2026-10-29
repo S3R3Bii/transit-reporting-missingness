@@ -1,0 +1,10 @@
+{
+  "phase": "development",
+  "elapsed_seconds": 0.675098100095056,
+  "baseline_roster_units": 455,
+  "cohort_unit_year_pairs": 1303,
+  "point_rows": 2916,
+  "bound_rows": 2916,
+  "mask_memberships": 4149,
+  "scope": "Fixed retrospective published-count benchmark with synthetic gaps; no fitting or empirical missingness mechanism claim."
+}

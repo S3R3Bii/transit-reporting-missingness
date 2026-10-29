@@ -20,7 +20,9 @@ WHERE = "mode='MB' AND year between 2019 and 2025"
 
 
 def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "ResearchPortfolio-source-capture/1.0"})
+    req = urllib.request.Request(
+        url, headers={"User-Agent": "ResearchPortfolio-source-capture/1.0"}
+    )
     with urllib.request.urlopen(req, timeout=120) as response:
         return response.read()
 
@@ -31,10 +33,18 @@ def digest(data):
 
 def canonical_metadata(data):
     value = json.loads(data)
-    return dict(id=value["id"], name=value["name"], license=value.get("licenseId"),
-                rowsUpdatedAt=value["rowsUpdatedAt"], viewLastModified=value["viewLastModified"],
-                columns=[dict(field=c["fieldName"], type=c["dataTypeName"])
-                         for c in value["columns"] if c["fieldName"] in FIELDS])
+    return dict(
+        id=value["id"],
+        name=value["name"],
+        license=value.get("licenseId"),
+        rowsUpdatedAt=value["rowsUpdatedAt"],
+        viewLastModified=value["viewLastModified"],
+        columns=[
+            dict(field=c["fieldName"], type=c["dataTypeName"])
+            for c in value["columns"]
+            if c["fieldName"] in FIELDS
+        ],
+    )
 
 
 def source_row(row):
@@ -44,7 +54,11 @@ def source_row(row):
     year = Decimal(row["year"])
     assert year == int(year) and 2019 <= int(year) <= 2025
     date = datetime.fromisoformat(row["month_year"])
-    assert date.year == int(year) and date.day == 1 and date.hour == date.minute == date.second == 0
+    assert (
+        date.year == int(year)
+        and date.day == 1
+        and date.hour == date.minute == date.second == 0
+    )
     count = row.get("ridership")
     if count is not None:
         count = Decimal(count)
@@ -71,40 +85,86 @@ def capture(private_dir):
         public_name = name + ".gz"
         packed = gzip.compress(data, mtime=0)
         (dest / public_name).write_bytes(packed)
-        requests.append(dict(name=public_name, url=url, response_sha256=digest(data),
-                             compressed_sha256=digest(packed), bytes=len(data)))
+        requests.append(
+            dict(
+                name=public_name,
+                url=url,
+                response_sha256=digest(data),
+                compressed_sha256=digest(packed),
+                bytes=len(data),
+            )
+        )
         return json.loads(data)
 
     for page in range(16):
-        values = query(f"rows-{page:03d}.json", {"$select": ",".join(FIELDS), "$where": WHERE,
-                       "$order": "_5_digit_ntd_id,type_of_service,year,month_year", "$limit": 50000, "$offset": page * 50000})
+        values = query(
+            f"rows-{page:03d}.json",
+            {
+                "$select": ",".join(FIELDS),
+                "$where": WHERE,
+                "$order": "_5_digit_ntd_id,type_of_service,year,month_year",
+                "$limit": 50000,
+                "$offset": page * 50000,
+            },
+        )
         for value in values:
             row = source_row(value)
             assert tuple(row[:4]) not in seen, "Duplicate full source key"
-            seen.add(tuple(row[:4])); rows.append(row)
+            seen.add(tuple(row[:4]))
+            rows.append(row)
         if len(values) < 50000:
             break
     else:
         raise RuntimeError("Bounded page budget exhausted")
-    for name, group in [("monthly", "year,month_year"), ("agency-year", "_5_digit_ntd_id,type_of_service,year")]:
-        query(name + "-controls.json", {"$select": group + ",count(*) as rows,count(ridership) as nonnull,sum(ridership) as upt",
-              "$where": WHERE, "$group": group, "$order": group, "$limit": 50000})
+    for name, group in [
+        ("monthly", "year,month_year"),
+        ("agency-year", "_5_digit_ntd_id,type_of_service,year"),
+    ]:
+        query(
+            name + "-controls.json",
+            {
+                "$select": group
+                + ",count(*) as rows,count(ridership) as nonnull,sum(ridership) as upt",
+                "$where": WHERE,
+                "$group": group,
+                "$order": group,
+                "$limit": 50000,
+            },
+        )
     after = fetch(VIEW)
     (private_dir / "metadata-after.json").write_bytes(after)
-    assert canonical_metadata(after) == metadata, "Source revision changed during capture"
+    assert (
+        canonical_metadata(after) == metadata
+    ), "Source revision changed during capture"
     buffer = io.StringIO(newline="")
     writer = csv.writer(buffer, lineterminator="\n")
     writer.writerow(["agency", "service", "year", "month", "upt"])
     writer.writerows(sorted(rows, key=lambda r: r[:4]))
     data = gzip.compress(buffer.getvalue().encode(), mtime=0)
     (dest / "counts.csv.gz").write_bytes(data)
-    manifest = dict(retrieved_utc=datetime.now(timezone.utc).isoformat(), metadata=metadata,
-                    metadata_before_sha256=digest(before), metadata_after_sha256=digest(after), requests=requests,
-                    projection=dict(path="counts.csv.gz", sha256=digest(data), rows=len(rows)),
-                    scope="Only protocol-selected public federal agency-service/month UPT facts. No safety, passenger-level or contact fields.")
-    (dest / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(dict(state="CAPTURE_COMPLETE_CHECKS_PENDING", source_rows=len(rows), pages=page + 1,
-                         projection_sha256=digest(data), source_revision=metadata["rowsUpdatedAt"])))
+    manifest = dict(
+        retrieved_utc=datetime.now(timezone.utc).isoformat(),
+        metadata=metadata,
+        metadata_before_sha256=digest(before),
+        metadata_after_sha256=digest(after),
+        requests=requests,
+        projection=dict(path="counts.csv.gz", sha256=digest(data), rows=len(rows)),
+        scope="Only protocol-selected public federal agency-service/month UPT facts. No safety, passenger-level or contact fields.",
+    )
+    (dest / "manifest.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+    )
+    print(
+        json.dumps(
+            dict(
+                state="CAPTURE_COMPLETE_CHECKS_PENDING",
+                source_rows=len(rows),
+                pages=page + 1,
+                projection_sha256=digest(data),
+                source_revision=metadata["rowsUpdatedAt"],
+            )
+        )
+    )
 
 
 if __name__ == "__main__":
